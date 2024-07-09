@@ -1,0 +1,6 @@
+[submodule "Frontend"]
+	path = Frontend
+	url = https://github.com/Summer-Bootcamp-2024/SML-Frontend.git
+[submodule "Backend"]
+	path = Backend
+	url = https://github.com/Summer-Bootcamp-2024/SML-Backend.git
