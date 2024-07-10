@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgresql
+      - redis
+    env_file:
+      - .env
+    container_name: teamM
+    tty: true
+    networks:
+      - teamM
+
+  postgresql:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - teamM
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - teamM
+
+volumes:
+  postgres_data:
+
+networks:
+  teamM:
+    driver: bridge
