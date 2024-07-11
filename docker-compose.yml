@@ -3,9 +3,8 @@ version: '3.8'
 services:
   fastapi:
     build:
-      context: .
+      context: ./Backend
       dockerfile: Dockerfile
-    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
     volumes:
       - .:/app
     ports:
@@ -14,7 +13,7 @@ services:
       - postgresql
       - redis
     env_file:
-      - .env
+      - ./Backend/.env
     container_name: teamM
     tty: true
     networks:
@@ -25,7 +24,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:
-      - .env
+      - ./Backend/.env
     networks:
       - teamM
 
