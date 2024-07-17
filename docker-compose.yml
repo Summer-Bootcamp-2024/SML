@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   fastapi:
@@ -10,14 +10,20 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - postgresql
-      - redis
+      elasticsearch:
+        condition: service_healthy
+      postgresql:
+        condition: service_started
+      redis:
+        condition: service_started
     env_file:
       - ./Backend/.env
     container_name: teamM
     tty: true
     networks:
       - teamM
+
+
 
   postgresql:
     image: postgres:13
@@ -35,8 +41,31 @@ services:
     networks:
       - teamM
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -fsSL http://localhost:9200/_cluster/health || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - teamM
+
+
 volumes:
   postgres_data:
+  esdata:
 
 networks:
   teamM:
