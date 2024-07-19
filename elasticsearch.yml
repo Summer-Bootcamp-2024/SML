@@ -1,0 +1,22 @@
+cluster.name: "docker-cluster"
+network.host: 0.0.0.0
+
+http.cors.enabled: true
+http.cors.allow-origin: "http://localhost:5173"
+
+analysis:
+  tokenizer:
+    ngram_tokenizer:
+      type: ngram
+      min_gram: 2
+      max_gram: 3
+      token_chars: [letter, digit]
+  analyzer:
+    ngram_analyzer:
+      type: custom
+      tokenizer: ngram_tokenizer
+      filter: [lowercase]
+    search_analyzer:
+      type: custom
+      tokenizer: standard
+      filter: [lowercase]
