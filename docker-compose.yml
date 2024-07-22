@@ -13,22 +13,49 @@ services:
       redis:
         condition: service_started
     env_file:
-      - ./Backend/.env
+      - .env
     container_name: teamM
     tty: true
     networks:
       - teamM
 
-
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:v1.8.1
+    container_name: node_exporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+        - "--path.procfs=/host/proc"
+        - "--path.sysfs=/host/sys"
+        - "--collector.filesystem.ignored-mount-points"
+        - "^/(rootfs/)?(dev|etc|host|proc|run|sys|volume1)($$|/)"
+    restart: unless-stopped
+    networks:
+      - teamM
 
   postgresql:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:
-      - ./Backend/.env
+      - .env
     ports:
       - "5432:5432"
+    networks:
+      - teamM
+
+  postgres-exporter:
+    image: wrouesnel/postgres_exporter:latest
+    container_name: postgres_exporter
+    ports:
+      - "9187:9187"
+    environment:
+      - DATA_SOURCE_NAME=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable
+    platform: linux/amd64
     networks:
       - teamM
 
@@ -36,6 +63,16 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+    networks:
+      - teamM
+
+  redis-exporter:
+    image: oliver006/redis_exporter:latest
+    container_name: redis_exporter
+    environment:
+      - REDIS_ADDR=redis:6379
+    ports:
+      - "9121:9121"
     networks:
       - teamM
 
@@ -61,6 +98,37 @@ services:
     networks:
       - teamM
 
+  elasticsearch-exporter:
+    image: justwatch/elasticsearch_exporter:latest
+    platform: linux/amd64
+    ports:
+      - "9114:9114"
+    environment:
+      - ES_URI=http://elasticsearch:9200
+    networks:
+      - teamM
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - teamM
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./grafana:/etc/grafana/provisioning
+      - ./grafana/data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - teamM
+
   nginx:
     container_name: nginx
     build:
@@ -72,6 +140,17 @@ services:
     networks:
       - teamM
 
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:latest
+    container_name: nginx_exporter
+    ports:
+      - "9113:9113"
+    environment:
+      - NGINX_STATUS_URL=http://nginx/nginx_status
+    depends_on:
+      - nginx
+    networks:
+      - teamM
 
 volumes:
   postgres_data:
