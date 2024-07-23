@@ -2,3 +2,4 @@
 .env
 .DS_Store
 nginx/log/
+grafana/data/grafana.db
