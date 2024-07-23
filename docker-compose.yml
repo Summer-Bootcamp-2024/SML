@@ -114,7 +114,9 @@ services:
     container_name: logstash
     volumes:
       - ./Backend/logging/logstash/config:/usr/share/logstash/config
+      - ./Backend/logging/logstash/config:/usr/share/logstash/config
       - ./Backend/logging/logstash/pipeline:/usr/share/logstash/pipeline
+      - ./Backend/logging/logstash/config/log4j2.properties:/usr/share/logstash/config/log4j2.properties
     ports:
       - "5044:5044"
     networks:
