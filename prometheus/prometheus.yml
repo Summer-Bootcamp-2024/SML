@@ -20,7 +20,7 @@ scrape_configs:
       - targets: ['elasticsearch-exporter:9114']
   - job_name: 'nginx-data'
     static_configs:
-      - targets: ['nginx-exporter:9113']
+      - targets: ['nginx_exporter:9113']
   - job_name: 'node-data'
     static_configs:
       - targets: ['node_exporter:9100']
