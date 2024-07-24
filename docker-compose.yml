@@ -14,6 +14,7 @@ services:
         condition: service_started
       redis:
         condition: service_started
+    restart: always
     env_file:
       - .env
     container_name: teamM
@@ -21,23 +22,6 @@ services:
     networks:
       - teamM
 
-#  node_exporter:
-#    image: quay.io/prometheus/node-exporter:v1.8.1
-#    container_name: node_exporter
-#    ports:
-#      - "9100:9100"
-#    volumes:
-#      - /proc:/host/proc:ro
-#      - /sys:/host/sys:ro
-#      - /:/rootfs:ro
-#    command:
-#      - "--path.procfs=/host/proc"
-#      - "--path.sysfs=/host/sys"
-#      - "--collector.filesystem.ignored-mount-points"
-#      - "^/(rootfs/)?(dev|etc|host|proc|run|sys|volume1)($$|/)"
-#    restart: unless-stopped
-#    networks:
-#      - teamM
 
   postgresql:
     image: postgres:13
@@ -50,16 +34,6 @@ services:
     networks:
       - teamM
 
-#  postgres-exporter:
-#    image: wrouesnel/postgres_exporter:latest
-#    container_name: postgres_exporter
-#    ports:
-#      - "9187:9187"
-#    environment:
-#      - DATA_SOURCE_NAME=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable
-#    platform: linux/amd64
-#    networks:
-#      - teamM
 
   redis:
     image: redis:latest
@@ -68,15 +42,6 @@ services:
     networks:
       - teamM
 
-#  redis-exporter:
-#    image: oliver006/redis_exporter:latest
-#    container_name: redis_exporter
-#    environment:
-#      - REDIS_ADDR=redis:6379
-#    ports:
-#      - "9121:9121"
-#    networks:
-#      - teamM
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
@@ -93,87 +58,14 @@ services:
     ports:
       - "9200:9200"
     healthcheck:
-      test: [ "CMD-SHELL", "curl -fsSL http://localhost:9200/_cluster/health || exit 1" ]
+      test: ["CMD-SHELL", "curl -fsSL http://localhost:9200/_cluster/health || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
     networks:
       - teamM
 
-#  elasticsearch-exporter:
-#    image: quay.io/prometheuscommunity/elasticsearch-exporter:latest
-#    platform: linux/amd64
-#    ports:
-#      - "9114:9114"
-#    command:
-#      - '--es.uri=http://elasticsearch:9200'
-#      - '--es.ssl-skip-verify'
-#      - '--es.all'
-#    depends_on:
-#      - elasticsearch
-#    networks:
-#      - teamM
-#
-#  logstash:
-#    image: docker.elastic.co/logstash/logstash:7.10.1
-#    platform: linux/amd64
-#    container_name: logstash
-#    volumes:
-#      - ./Backend/logging/logstash/config:/usr/share/logstash/config
-#      - ./Backend/logging/logstash/pipeline:/usr/share/logstash/pipeline
-#      - ./Backend/logging/logstash/config/log4j2.properties:/usr/share/logstash/config/log4j2.properties
-#    ports:
-#      - "5044:5044"
-#    networks:
-#      - teamM
-#    depends_on:
-#      - elasticsearch
-#
-#  kibana:
-#    image: docker.elastic.co/kibana/kibana:7.10.1
-#    platform: linux/amd64
-#    container_name: kibana
-#    ports:
-#      - "5601:5601"
-#    networks:
-#      - teamM
-#    depends_on:
-#      - elasticsearch
-#
-#  filebeat:
-#    image: docker.elastic.co/beats/filebeat:7.10.2
-#    platform: linux/amd64
-#    container_name: filebeat
-#    volumes:
-#      - ./Backend/logging:/logging
-#      - ./Backend/logging/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-#      - ./nginx/log:/var/log/nginx  # nginx 로그를 호스트와 컨테이너 간에 공유
-#    networks:
-#      - teamM
-#    depends_on:
-#      - logstash
-#    command: filebeat -e -c /usr/share/filebeat/filebeat.yml --strict.perms=false
-#
-#  prometheus:
-#    image: prom/prometheus:latest
-#    ports:
-#      - "9090:9090"
-#    volumes:
-#      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-#    command:
-#      - '--config.file=/etc/prometheus/prometheus.yml'
-#    networks:
-#      - teamM
-#
-#  grafana:
-#    image: grafana/grafana:latest
-#    volumes:
-#      - ./grafana:/etc/grafana/provisioning
-#      - ./grafana/data:/var/lib/grafana
-#    ports:
-#      - "3000:3000"
-#    networks:
-#      - teamM
+
 
   nginx:
     container_name: nginx
@@ -181,24 +73,12 @@ services:
       context: ./nginx
     ports:
       - "80:80"
-    volumes:
-      - ./nginx/log:/var/log/nginx  # 로그 디렉토리 마운트
+
     depends_on:
       - fastapi
+      - frontend
     networks:
       - teamM
-
-#  nginx-exporter:
-#    image: nginx/nginx-prometheus-exporter:1.0
-#    container_name: nginx_exporter
-#    ports:
-#      - "9113:9113"
-#    command:
-#      - -nginx.scrape-uri=http://nginx:80/metrics
-#    depends_on:
-#      - nginx
-#    networks:
-#      - teamM
 
   frontend:
     container_name: frontend
