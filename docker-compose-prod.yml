@@ -1,5 +1,20 @@
 services:
-  fastapi:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "5173:5173"
+    volumes:
+      - build_folder:/frontend/dist
+    networks:
+      - teamM
+    tty: true
+    stdin_open: true
+
+  backend:
+    container_name: backend
     build:
       context: ./Backend
       dockerfile: Dockerfile
@@ -16,7 +31,6 @@ services:
       always
     env_file:
       - .env
-    container_name: teamM
     tty: true
     networks:
       - teamM
@@ -181,9 +195,11 @@ services:
     ports:
       - 80:80
     volumes:
+      - build_folder:/var/www/frontend
       - ./nginx/log:/var/log/nginx  # 로그 디렉토리 마운트
     depends_on:
-      - fastapi
+      - frontend
+      - backend
     networks:
       - teamM
 
@@ -202,7 +218,7 @@ services:
 volumes:
   postgres_data:
   esdata:
-
+  build_folder:
 networks:
   teamM:
     driver: bridge
