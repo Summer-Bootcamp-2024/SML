@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   fastapi:
     build:
@@ -12,8 +14,7 @@ services:
         condition: service_started
       redis:
         condition: service_started
-    restart:
-      always
+    restart: always
     env_file:
       - .env
     container_name: teamM
@@ -54,7 +55,7 @@ services:
     ports:
       - "9200:9200"
     healthcheck:
-      test: [ "CMD-SHELL", "curl -fsSL http://localhost:9200/_cluster/health || exit 1" ]
+      test: ["CMD-SHELL", "curl -fsSL http://localhost:9200/_cluster/health || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -66,14 +67,26 @@ services:
     build:
       context: ./nginx
     ports:
-      - 80:80
-#    volumes:
-#      - ./nginx/nginx.conf:/etc/nginx/nginx.conf  # Nginx 설정 파일 마운트
-#      - ./nginx/log:/var/log/nginx  # 로그 디렉토리 마운트
+      - "80:80"
     depends_on:
       - fastapi
+      - frontend
     networks:
       - teamM
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./Frontend:/app
+    networks:
+      - teamM
+    tty: true
+    stdin_open: true
 
 volumes:
   postgres_data:
