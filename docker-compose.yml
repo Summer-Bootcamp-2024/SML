@@ -1,7 +1,20 @@
-version: '3.8'
-
 services:
-  fastapi:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "5173:5173"
+    volumes:
+      - build_folder:/frontend/dist
+    networks:
+      - teamM
+    tty: true
+    stdin_open: true
+
+  backend:
+    container_name: backend
     build:
       context: ./Backend
       dockerfile: Dockerfile
@@ -17,7 +30,6 @@ services:
     restart: always
     env_file:
       - .env
-    container_name: teamM
     tty: true
     networks:
       - teamM
@@ -68,34 +80,18 @@ services:
       context: ./nginx
     ports:
       - "80:80"
-    #    volumes:
-    #      - ./nginx/nginx.conf:/etc/nginx/nginx.conf  # Nginx 설정 파일 마운트
-    #      - ./nginx/log:/var/log/nginx  # 로그 디렉토리 마운트
-
-    depends_on:
-      - fastapi
-      - frontend
-    networks:
-      - teamM
-
-  frontend:
-    container_name: frontend
-    build:
-      context: ./Frontend
-      dockerfile: Dockerfile.prod
-    ports:
-      - "5173:5173"
     volumes:
-      - ./Frontend:/app
+      - build_folder:/var/www/frontend
+    depends_on:
+      - frontend
+      - backend
     networks:
       - teamM
-    tty: true
-    stdin_open: true
 
 volumes:
   postgres_data:
   esdata:
-
+  build_folder:
 networks:
   teamM:
     driver: bridge

@@ -1,5 +1,20 @@
 services:
-  fastapi:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile.prod
+    ports:
+      - "5173:5173"
+    volumes:
+      - build_folder:/frontend/dist
+    networks:
+      - teamM
+    tty: true
+    stdin_open: true
+
+  backend:
+    container_name: backend
     build:
       context: ./Backend
       dockerfile: Dockerfile
@@ -8,15 +23,12 @@ services:
     depends_on:
       elasticsearch:
         condition: service_healthy
-      postgresql:
-        condition: service_started
       redis:
         condition: service_started
     restart:
       always
     env_file:
       - .env
-    container_name: teamM
     tty: true
     networks:
       - teamM
@@ -36,28 +48,6 @@ services:
         - "--collector.filesystem.ignored-mount-points"
         - "^/(rootfs/)?(dev|etc|host|proc|run|sys|volume1)($$|/)"
     restart: unless-stopped
-    networks:
-      - teamM
-
-  postgresql:
-    image: postgres:13
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    env_file:
-      - .env
-    ports:
-      - "5432:5432"
-    networks:
-      - teamM
-
-  postgres-exporter:
-    image: wrouesnel/postgres_exporter:latest
-    container_name: postgres_exporter
-    ports:
-      - "9187:9187"
-    environment:
-      - DATA_SOURCE_NAME=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?sslmode=disable
-    platform: linux/amd64
     networks:
       - teamM
 
@@ -181,9 +171,11 @@ services:
     ports:
       - 80:80
     volumes:
+      - build_folder:/var/www/frontend
       - ./nginx/log:/var/log/nginx  # 로그 디렉토리 마운트
     depends_on:
-      - fastapi
+      - frontend
+      - backend
     networks:
       - teamM
 
@@ -200,9 +192,8 @@ services:
       - teamM
 
 volumes:
-  postgres_data:
   esdata:
-
+  build_folder:
 networks:
   teamM:
     driver: bridge
