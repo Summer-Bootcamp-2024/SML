@@ -6,7 +6,6 @@ on:
     types:
       - completed
 
-
 jobs:
   deploy:
     name: Deploy
@@ -23,11 +22,11 @@ jobs:
 
     - name: Test SSH connection
       run: |
-        ssh -i private_key.pem -a StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@$${{ secrets.EC2_HOST }} "echo SSH connection
+        ssh -i private_key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo SSH connection successful"
 
     - name: Deploy to EC2
       run: |
-        ssh -i private_key.pem -a StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@$${{ secrets.EC2_HOST }} << 'EOF'
+        ssh -i private_key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
         if [ ! -d "/home/${{ secrets.EC2_USER }}/Summer-Bootcamp-2024/SML" ]; then
           git clone https://github.com/Summer-Bootcamp-2024/SML.git
         fi
@@ -38,3 +37,4 @@ jobs:
         git submodule update
         docker compose -f docker-compose.yml down
         docker compose -f docker-compose.yml up -d --build
+        EOF
