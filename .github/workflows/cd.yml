@@ -14,6 +14,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        submodules: true
 
     - name: Prepare SSH key
       run: |
@@ -32,9 +34,11 @@ jobs:
         fi
         cd Summer-Bootcamp-2024/SML
         git pull origin main
-        git submodule init Backend
-        git submodule init Frontend
-        git submodule update
+        git submodule update --init --recursive
         docker compose -f docker-compose.yml down
         docker compose -f docker-compose.yml up -d --build
         EOF
+
+    - name: Cleanup SSH key
+      run: |
+        rm private_key.pem
