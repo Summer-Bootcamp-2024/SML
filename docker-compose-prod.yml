@@ -104,44 +104,44 @@ services:
     networks:
       - teamM
 
-  logstash:
-    image: docker.elastic.co/logstash/logstash:7.10.1
-    platform: linux/amd64
-    container_name: logstash
-    volumes:
-      - ./Backend/logging/logstash/config:/usr/share/logstash/config
-      - ./Backend/logging/logstash/pipeline:/usr/share/logstash/pipeline
-      - ./Backend/logging/logstash/config/log4j2.properties:/usr/share/logstash/config/log4j2.properties
-    ports:
-      - "5044:5044"
-    networks:
-      - teamM
-    depends_on:
-      - elasticsearch
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.10.1
-    platform: linux/amd64
-    container_name: kibana
-    ports:
-      - "5601:5601"
-    networks:
-      - teamM
-    depends_on:
-      - elasticsearch
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:7.10.1
+#    platform: linux/amd64
+#    container_name: logstash
+#    volumes:
+#      - ./Backend/logging/logstash/config:/usr/share/logstash/config
+#      - ./Backend/logging/logstash/pipeline:/usr/share/logstash/pipeline
+#      - ./Backend/logging/logstash/config/log4j2.properties:/usr/share/logstash/config/log4j2.properties
+#    ports:
+#      - "5044:5044"
+#    networks:
+#      - teamM
+#    depends_on:
+#      - elasticsearch
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:7.10.1
+#    platform: linux/amd64
+#    container_name: kibana
+#    ports:
+#      - "5601:5601"
+#    networks:
+#      - teamM
+#    depends_on:
+#      - elasticsearch
 
-  filebeat:
-    image: docker.elastic.co/beats/filebeat:7.10.2
-    platform: linux/amd64
-    container_name: filebeat
-    volumes:
-      - ./Backend/logging:/logging
-      - ./Backend/logging/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - ./nginx/log:/var/log/nginx  # nginx 로그를 호스트와 컨테이너 간에 공유
-    networks:
-      - teamM
-    depends_on:
-      - logstash
-    command: filebeat -e -c /usr/share/filebeat/filebeat.yml --strict.perms=false
+#  filebeat:
+#    image: docker.elastic.co/beats/filebeat:7.10.2
+#    platform: linux/amd64
+#    container_name: filebeat
+#    volumes:
+#      - ./Backend/logging:/logging
+#      - ./Backend/logging/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+#      - ./nginx/log:/var/log/nginx  # nginx 로그를 호스트와 컨테이너 간에 공유
+#    networks:
+#      - teamM
+#    depends_on:
+#      - logstash
+#    command: filebeat -e -c /usr/share/filebeat/filebeat.yml --strict.perms=false
 
   prometheus:
     image: prom/prometheus:latest
