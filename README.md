@@ -11,15 +11,17 @@
 - [Medium](#Medium)
 - [Demo](#Demo)
 - [System Architechture](#System_Architechture)
-- [Teck Stack](#Teck Stack)
+- [Teck Stack](#Teck_Stack)
 - [ERD](#ERD)
 - [API](#API)
 - [Monitoring](#Monitoring)
-- [How to start](#How to start)
-- [Team Member](#Team Member)
+- [How to start](#How_to_start)
+- [Team Member](#Team_Member)
 ## 📒 Medium
 ## 📹 DEMO
 ## 💻 System Architechture
+![image](https://github.com/user-attachments/assets/f883ab56-3570-40be-a688-2b13b0446230)
+
 ## 💡Teck Stack
 | 분야    | 사용기술  |
 |:---------:|:------:|
