@@ -33,6 +33,10 @@
 | etc  | <img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=ffffff"/> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=ffffff"/> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=ffffff"/> <br> <img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=ffffff"/> <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=ffffff"/> <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=ffffff"/>|
 ## 💾ERD
 ## 🔑API
+![image](https://github.com/user-attachments/assets/6e0a4bae-1f83-43b4-83ea-4dd9ee0e09e2)
+![image](https://github.com/user-attachments/assets/ad3b530b-a333-4177-8eaa-ee869e181d4e)
+![image](https://github.com/user-attachments/assets/7881b6ae-807a-40b0-a803-5b5dce21336b)
+
 ## 📈 Monitoring
 ## ❓How to start
 ## 👥Team Member
