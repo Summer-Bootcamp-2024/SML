@@ -6,7 +6,6 @@
   <strong>"Search, Match and Link"</strong>
 </p>
 
-
 ## 📝Table of Contents
 - [Medium](#Medium)
 - [Demo](#Demo)
