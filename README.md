@@ -9,14 +9,14 @@
 
 ## 📝Table of Contents
 - [Medium](#Medium)
-- Demo
-- System Architechture
-- Teck Stack
-- ERD
-- API
-- Monitoring
-- How to start
-- Team Member
+- [Demo](#Demo)
+- [System Architechture](#System Architechture)
+- [Teck Stack](#Teck Stack)
+- [ERD](#ERD)
+- [API](#API)
+- [Monitoring](#Monitoring)
+- [How to start](#How to start)
+- [Team Member](#Team Member)
 ## 📒 Medium
 ## 📹 DEMO
 ## 💻 System Architechture
