@@ -5,7 +5,7 @@
   나의 지인들 중에서 도움이 될 사람을 찾아보고, 네트워크를 형성해보세요!<br><br>
   <strong>"Search, Match and Link"</strong>
 </p>
-
+<br><br>
 
 ## 📝Table of Contents
 - [Medium](#Medium)
@@ -17,31 +17,30 @@
 - [Monitoring](#Monitoring)
 - [How to start](#How_to_start)
 - [Team Member](#Team_Member)
+
+<br><br>
 ## 📒 Medium
-## 📹 DEMO
+<br><br>
+## 📹 DEMO  
+ ### 온보딩 페이지 
+![제목 없는 동영상 - Clipchamp로 제작 (13)](https://github.com/user-attachments/assets/eac22e11-3bfb-4379-a95e-f1b7cfda4b97)
 
-<div align="center">
+ ### 회원가입&로그인
+ ![제목 없는 동영상 - Clipchamp로 제작 (12)](https://github.com/user-attachments/assets/ce3186b5-c6bb-4f1b-9483-cb99d55221b1) 
+ ### 일촌리스트 페이지
 
+ ### 검색페이지 
 
-| 온보딩 페이지 | 
-|:-------:|
-| ![제목 없는 동영상 - Clipchamp로 제작 (10)](https://github.com/user-attachments/assets/b2361752-8c60-40f3-b920-c54729d80e36) | 
-| **회원가입&로그인** | 
-| 이영희  | 
-| **일촌리스트 페이지** | 
-| 이영희 |
-| **검색페이지** | 
-| 이영희  | 
-| **소개요청** | 
-| 이영희  |  
-| **일촌요청 및 크레딧 선물** | 
-| 이영희  | 
-| **마이페이지** | 
-| 이영희  | 
-</div>
+ ### 소개요청 
+ 
+ ### 일촌요청 및 크레딧 선물
+ ### 마이페이지 
+ 
+<br><br>
 
 ## 💻 System Architechture
 ![image](https://github.com/user-attachments/assets/f883ab56-3570-40be-a688-2b13b0446230)
+<br><br>
 
 ## 💡Teck Stack
 | 분야    | 사용기술  |
@@ -52,14 +51,31 @@
 | DevOps  | <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=ffffff"/> <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=ffffff"/> <img src="https://img.shields.io/badge/amazonec2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=ffffff"/> <img src="https://img.shields.io/badge/amazons3-569A31?style=for-the-badge&logo=amazons3&logoColor=ffffff"/> |
 | Monitoring	  | <img src="https://img.shields.io/badge/grafana-F46800?style=for-the-badge&logo=grafana&logoColor=ffffff"/> <img src="https://img.shields.io/badge/prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=ffffff"/> <br> <img src="https://img.shields.io/badge/logstash-005571?style=for-the-badge&logo=logstash&logoColor=ffffff"/> <img src="https://img.shields.io/badge/kibana-005571?style=for-the-badge&logo=pkibanas&logoColor=ffffff"/> <img src="https://img.shields.io/badge/elasticsearch-005571?style=for-the-badge&logo=elasticsearch&logoColor=ffffff"/> | 
 | etc  | <img src="https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=ffffff"/> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=ffffff"/> <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=ffffff"/> <br> <img src="https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=ffffff"/> <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=ffffff"/> <img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=ffffff"/>|
+<br><br>
+
 ## 💾ERD
+<br><br>
+
 ## 🔑API
 ![image](https://github.com/user-attachments/assets/6e0a4bae-1f83-43b4-83ea-4dd9ee0e09e2)
 ![image](https://github.com/user-attachments/assets/ad3b530b-a333-4177-8eaa-ee869e181d4e)
 ![image](https://github.com/user-attachments/assets/7881b6ae-807a-40b0-a803-5b5dce21336b)
+<br><br>
 
 ## 📈 Monitoring
+### Grafana & Prometheus
+![스크린샷 2024-07-29 오전 12 35 12](https://github.com/user-attachments/assets/a87a60af-9df8-4664-b9f2-31065c194e24) 
+![스크린샷 2024-07-29 오전 12 09 34](https://github.com/user-attachments/assets/4172eee4-dc93-4e38-b023-1a3ea46dfece) 
+- Prometheus를 통해 웹 서비스의 데이터를 수집하고, Grafana를 통해 시각화
+<br>
+
+### Kibana 
+![image](https://github.com/user-attachments/assets/9a64785b-c7bb-4572-b186-8f89f422b7da)
+- elasticsearch를 활용해 유저의 정보를 kibana로 시각화
+<br><br>
 ## ❓How to start
+<br><br>
+
 ## 👥Team Member
 | Name    |                   <center>원영서</center>                   |                    <center>김예림</center>                    |                   <center>장희수</center>                   |                 <center>배건우</center>                 |                     <center>진기태</center>                     |
 | :------ | :---------------------------------------------------------: | :-----------------------------------------------------------: | :---------------------------------------------------------: | :-----------------------------------------------------: | :-------------------------------------------------------------: |
