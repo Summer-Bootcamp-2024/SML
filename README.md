@@ -25,6 +25,8 @@
  ### 온보딩 페이지 
 ![제목 없는 동영상 - Clipchamp로 제작 (13)](https://github.com/user-attachments/assets/eac22e11-3bfb-4379-a95e-f1b7cfda4b97)
 
+![제목 없는 동영상 - Clipchamp로 제작 (3)](https://github.com/user-attachments/assets/6779bf30-5dce-406f-bdf2-07619fcca404)
+
  ### 회원가입&로그인
  ![제목 없는 동영상 - Clipchamp로 제작 (12)](https://github.com/user-attachments/assets/ce3186b5-c6bb-4f1b-9483-cb99d55221b1) 
  ### 일촌리스트 페이지
