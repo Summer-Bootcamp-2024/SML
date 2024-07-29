@@ -1,3 +1,4 @@
+![image](https://github.com/user-attachments/assets/9c005124-49eb-422a-bcdb-da3de9a7dc9c)
 ![header](https://capsule-render.vercel.app/api?type=wave&color=auto&height=300&section=header&text=SML&fontSize=90)
 # SML
 - 로고 / 서비스명 / 간단한 설명 / 기간
