@@ -1,9 +1,11 @@
 <img src="https://github.com/user-attachments/assets/9c005124-49eb-422a-bcdb-da3de9a7dc9c" width="1155" height="203">
+<br><br>
 <p align="center">
   실력만큼 중요해진 기회, 그리고 그 기회는 관계 속에서 발생합니다.<br><br>
-나의 지인들 중에서 도움이 될 사람을 찾아보고, 네트워크를 형성해보세요!<br><br>
-**"Search, Match and Link"**
+  나의 지인들 중에서 도움이 될 사람을 찾아보고, 네트워크를 형성해보세요!<br><br>
+  <strong>"Search, Match and Link"</strong>
 </p>
+
 
 ## 📝Table of Contents
 - [Medium](#Medium)
