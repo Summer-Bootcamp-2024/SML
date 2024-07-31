@@ -19,9 +19,9 @@
 - [Team Member](#Team_Member)
 
 <br><br>
-## 📒 Medium
+## 📒Medium
 <br><br>
-## 📹 Demo 
+## 📹Demo 
  #### 온보딩 페이지 
 ![온보딩 리드미 - Clipchamp로 제작](https://github.com/user-attachments/assets/0b121a99-6a92-42db-b0ec-765c5d1ef9d4)
  #### 회원가입&로그인
@@ -40,7 +40,7 @@
 <br><br>
 
 
-## 💻 System Architechture
+## 💻System Architechture
 ![image](https://github.com/user-attachments/assets/f883ab56-3570-40be-a688-2b13b0446230)
 <br><br>
 
@@ -65,7 +65,7 @@
 ![image](https://github.com/user-attachments/assets/7881b6ae-807a-40b0-a803-5b5dce21336b)
 <br><br>
 
-## 📈 Monitoring
+## 📈Monitoring
 #### Grafana & Prometheus
 ![스크린샷 2024-07-29 오전 12 35 12](https://github.com/user-attachments/assets/a87a60af-9df8-4664-b9f2-31065c194e24) 
 ![스크린샷 2024-07-29 오전 12 09 34](https://github.com/user-attachments/assets/4172eee4-dc93-4e38-b023-1a3ea46dfece)
