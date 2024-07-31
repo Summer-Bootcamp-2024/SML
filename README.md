@@ -11,12 +11,12 @@
 - [Medium](#Medium)
 - [Demo](#Demo)
 - [System Architechture](#System-Architechture)
-- [Teck Stack](#Teck_Stack)
+- [Teck Stack](#Teck-Stack)
 - [ERD](#ERD)
 - [API](#API)
 - [Monitoring](#Monitoring)
-- [How to start](#How_to_start)
-- [Team Member](#Team_Member)
+- [How to start](#How-to-start)
+- [Team Member](#Team-Member)
 
 <br><br>
 ## 📒Medium
