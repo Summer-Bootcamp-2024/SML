@@ -10,7 +10,7 @@
 ## 📝Table of Contents
 - [Medium](#Medium)
 - [Demo](#Demo)
-- [System Architechture](#System_Architechture)
+- [System Architechture](#System-Architechture)
 - [Teck Stack](#Teck_Stack)
 - [ERD](#ERD)
 - [API](#API)
