@@ -4,7 +4,6 @@
   실력만큼 중요해진 기회, 그리고 그 기회는 관계 속에서 발생합니다.<br><br>
   나의 지인들 중에서 도움이 될 사람을 찾아보고, 네트워크를 형성해보세요!<br><br>
   <strong>"Search, Match and Link"</strong><br>
-  [SML](https://medium.com/@bkw54570/1201fcd2ced2)
 </p>
 <br><br>
 
@@ -21,6 +20,7 @@
 
 <br><br>
 ## 📒Medium
+🔗[https://medium.com/@bkw54570/1201fcd2ced2](https://medium.com/@bkw54570/1201fcd2ced2/)
 <br><br>
 ## 📹Demo 
  #### 온보딩 페이지 
